@@ -1,0 +1,51 @@
+SELECT m.nombre as medicos, e.nombre as especialidad 
+FROM medicos m 
+INNER JOIN especialidad e ON e.id_especialidad = m.id_medicos(trae todas las tablas relacionadas, menos vacios o null)
+
+SELECT m.nombre as medicos, e.nombre as especialidad 
+FROM medicos m 
+LEFT JOIN especialidad e ON e.id_especialidad = m.id_medicos(trae todos incluyendo los null)
+
+SELECT m.nombre as medicos, e.nombre as especialidad 
+FROM medicos m 
+RIGHT JOIN especialidad e ON e.id_especialidad = m.id_medicos(trae la tabla que esta despues de relacion ,la que esta despues del join)
+
+SELECT pe.Numero, c.Nombre, c.Apellido, p.Nombre AS productos , p.Precio
+FROM pedidos pe
+INNER JOIN clientes c ON c.cliente_id = pe.cliente_id
+INNER JOIN productos p ON p.productos_id = pe.productos_id(consulta con tabla pivot)
+
+HOSPITAL
+
+SELECT c.Fecha, m.Nombre AS medico, p.Nombre AS paciente
+FROM consultas c
+INNER JOIN medicos m ON m.id_medicos = c.id_medicos
+INNER JOIN paciente p ON p.id_paciente = c.id_paciente
+
+CINE
+
+SELECT a.Nombre, a.Apellido, pe.Tiltulo, pe.Calificación 
+FROM participacion p 
+INNER JOIN actores a ON a.id_actores = p.id_actores
+INNER JOIN pelicula pe ON pe.id_pelicula = p.id_pelicula
+
+ESCUELA
+
+SELECT c.Nombre, c.Turno, e.Nombre, e.Apellido, e.Edad
+FROM incripciones i 
+INNER JOIN curso c ON c.id_curso = i.id_curso
+INNER JOIN estudiantes e ON e.id_dni = i.id_dni;
+
+MUSICA
+
+SELECT b.Nombre, b.Genero_musical, m.Nombre, m.Apellido 
+FROM músico_banda mb
+INNER JOIN bandas b ON b.id_bandas = mb.id_bandas
+INNER JOIN músicos m ON m.id_Musicos = mb.id_Músicos
+
+BIBLIOTECA
+
+SELECT g.Generos_literarios, g.Editorial, l.Titulo, l.Autor
+FROM libro_genero lg
+INNER JOIN generos g ON g.id_generos = lg.id_generos
+INNER JOIN libros l ON l.id_libros = lg.id_libros

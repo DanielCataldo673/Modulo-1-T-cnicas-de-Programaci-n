@@ -1,0 +1,32 @@
+   1 - Base de datos ESCUELA
+*ESTUDIANTES
+*CURSO
+*INSCRIPCIONES
+Se desea modelar a través de un DER, la forma en que se implentaria la base de datos
+
+2- Base de datos CINE
+*Peliculas
+*Actores
+*Participaciones
+Se desea modelar a través de un DER, la forma en que se implentaria la base de datos
+
+3- Base de datos Biblioteca
+*Libros
+*Generos
+*Libro_generos
+Se desea modelar a través de un DER, la forma en que se implentaria la base de datos
+
+
+4- Base de datos "Musica"
+* Musicos
+* Bandas
+* musico_banda
+Se desea modelar a través de un DER, la forma en que se implentaria la base de datos
+
+
+5- Base de datos Hospital
+* Paciente
+* Medico
+* Consultas
+* Especialidad
+Se desea modelar a través de un DER, la forma en que se implentaria la base de datos

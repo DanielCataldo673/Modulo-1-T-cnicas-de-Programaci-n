@@ -1,0 +1,179 @@
+A- IS NULL O IS NOT NULL
+
+SELECT * FROM products
+WHERE ProductName IS NULL;
+
+SELECT * FROM products
+WHERE ProductName IS NOT null;
+
+B- OPERADOR IN,(ABREVIACIÓN DEL OPERADOR OR)
+
+VERCIÓN LARGA
+SELECT * FROM products
+WHERE SupplierID = 3
+OR SupplierID = 4
+OR SupplierID = 5
+OR SupplierID = 6;
+
+SIMPLIFICADO
+
+SELECT * FROM products
+WHERE SupplierID IN (3,4,5,6);
+
+CON NOT
+
+SELECT * FROM products
+WHERE SupplierID NOT IN (3,6);
+
+C- FUNCIONES DE AGREGACIÓN O AGRUPACIÓN (ESTAS FUNCIONES SOLO FUNCIONAN EN LA CLAUSULA SELECT)
+
+Cuenta
+SELECT COUNT(*) AS cantidadempleados FROM employees;
+ 
+Suma
+
+SELECT SUM(price) AS total FROM products;
+
+
+Promedio
+  
+SELECT AVG(price) AS promedio FROM products;
+
+Redondeo
+
+SELECT Round(AVG(price),2) AS promedios FROM products;
+
+Minimo
+
+SELECT productname, MIN(Price) AS Preciominimo FROM products;
+
+
+Maximo
+
+SELECT productname, MAX(Price) AS Preciomaximo FROM products;
+
+
+Ejercicios BD SAKILA
+
+1- ¿cuantos actores hay?
+
+SELECT COUNT(*) AS numActores FROM actor;
+
+2- ¿cuantos countries hay que empiezan con a?
+
+SELECT  COUNT(*) AS nomcountry FROM country
+WHERE country LIKE 'a%';
+
+3- ¿cual es el promedio de duracion de las peliculas con PG.
+
+SELECT round(AVG(length),2) as promedio FROM film
+WHERE rating = 'pg';
+
+4- Suma de rental_date de todas las peliculas.
+
+SELECT SUM(rental_rate) AS suma FROM film;
+
+5- Pelicula con mayor duracion.
+
+SELECT title, MAX(length) as mayorDuracion FROM film;
+
+6-Pelicula con menor duracion.
+
+SELECT title, MIN(length) as menorDuracion FROM film;
+
+D- GROUP BY y HAVING
+
+GROUP BY
+
+(agrupar varios registros segun los valores de la columna)
+
+SELECT SupplierID, AVG(Price) AS promedio FROM products
+GROUP BY SupplierID;
+
+Sacar el promedio de los precios, pero agrupado por categoria y redondear y que no me muestre los valores null.
+
+SELECT CategoryID, round(AVG(Price),2) AS promedio FROM products
+WHERE CategoryID IS NOT  null
+GROUP BY CategoryID; 
+
+
+HAVING
+
+(cuando usamos funciones de agrupacion no podemos usar where, tenemos que usar having(solo cuando hay un group by))
+
+SELECT CategoryID, round(AVG(Price),2) AS promedio FROM products
+WHERE CategoryID IS NOT  null 
+GROUP BY CategoryID
+HAVING promedio >40;
+
+
+Producto que mas se vende (orderdetails)
+
+SELECT ProductID, SUM(Quantity) AS total FROM orderdetails
+GROUP BY ProductID
+ORDER BY total DESC;
+
+La consulta me devuelva los productos que se vendieron mas de 50 veces.
+
+SELECT ProductID, SUM(Quantity) AS total FROM orderdetails
+GROUP BY ProductID
+HAVING total > 50
+ORDER BY total DESC;
+
+La consulta que me devuelva el producto mas vendido
+
+SELECT ProductID, SUM(Quantity) AS total FROM orderdetails
+GROUP BY ProductID
+HAVING total > 50
+ORDER BY total DESC
+LIMIT 1;
+
+RESUMEN
+
+Primero: SELECT
+Segundo: Filtrar los registros(WHERE)
+Tercero: Agrupar Registros(GROUP BY)
+Cuarto: solo si hay una funcion de agrupacion y group by usar(HAVING)
+Quinto:Ordenamiento(ORDER BY)
+Sexto: Limitar(LIMIT)
+
+BD NORTHWIND2
+
+1- Mostrar el numero de productos por categoria
+
+SELECT COUNT(*) AS numeroProductos, ProductName FROM products
+GROUP BY CategoryID;
+
+2- Mostrar la cantidad total de unidades vendidas por cada producto
+
+SELECT ProductID, SUM(Quantity) AS cantidadVendida FROM orderdetails 
+GROUP BY ProductID;
+
+3- Mostrar el promedio de precios por categoria de producto
+
+SELECT CategoryID, ProductName, round(AVG(Price),2) AS promedio FROM products 
+GROUP BY CategoryID;
+
+4- Mostrar las categorias de productos que tienen un promedio de precio mayor a 30
+
+SELECT CategoryID, ProductName, round(AVG(Price),2) AS promedio FROM products 
+GROUP BY CategoryID
+HAVING promedio > 30
+ORDER BY promedio;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

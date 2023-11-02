@@ -1,0 +1,55 @@
+Base de datos northwind
+
+Condiciones, Clausula (WHERE)
+
+devuelve todo
+SELECT product_name from products
+
+
+devuelve el id 14
+SELECT id, product_name from products 
+where id = 14
+
+operadores de comparacion < > =
+
+precio menor que 10.0000
+SELECT * from products 
+where list_price < 10.0000
+
+
+precio mayor que 10.0000
+SELECT * from products 
+where list_price > 10.0000
+
+
+
+eliminar un registro en la appmedicos
+delete from turnos_medicos 
+where id_turno = 3
+
+Editar un Registro
+Update  turnos_medicos 
+set horario  = "10:30" , motivo= "dolor de muelas"
+where id_turno = 2
+
+SELECT * FROM `products`
+WHERE id= 14;
+
+SELECT id, product_name FROM `products`
+WHERE id= 5;
+
+SELECT id, product_name, list_price FROM `products`
+WHERE list_price > 10.000
+ORDER BY list_price DESC
+
+DELETE FROM estudiantes
+WHERE id_estudiantes= 1;
+
+UPDATE estudiantes
+SET nombre= 'KIKA'
+WHERE id_estudiantes= 6;
+
+CREATE insert into
+READ select
+UPDATE update
+DELETE delete

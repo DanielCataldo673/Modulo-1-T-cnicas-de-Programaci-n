@@ -1,0 +1,82 @@
+
+Base de datos Sakila
+
+1-Muestra los nombres de los actores en orden alfabético por su apellido.
+SELECT first_name, last_name FROM `actor`
+ORDER BY last_name;
+
+2-Muestra los nombres de las ciudades en orden alfabético.
+SELECT city FROM `city`
+ORDER BY city;
+
+3-Muestra los nombres de las categorías en orden descendente.
+SELECT name FROM `category` 
+ORDER BY name DESC; 
+
+4-Muestra los títulos de las películas en orden alfabético.
+SELECT title FROM `film` 
+ORDER BY title;
+
+5- Muestra los nombres de los clientes en orden descendente por su apellido.
+SELECT first_name, last_name FROM `customer`
+ORDER BY last_name DESC;
+
+6-Muestra los nombres de los países en orden alfabético.
+SELECT country FROM `country` 
+ORDER BY country;
+
+7- Muestra los nombres de los idiomas en orden descendente.
+SELECT name FROM `language`
+ORDER BY name DESC;
+
+8- Muestra los nombres de las tiendas en orden alfabético.
+SELECT store_id FROM `store` 
+ORDER BY store_id;
+
+9- Muestra los nombres de los staffs en orden descendente por su apellido.
+SELECT first_name, last_name FROM `staff`
+ORDER BY last_name DESC;
+
+10 - Muestra los nombres de las películas en orden alfabético inverso.
+SELECT title FROM `film`
+ORDER BY title DESC;
+
+11 - Muestra los nombres de los clientes en orden ascendente por su apellido.
+SELECT first_name, last_name FROM `customer`
+ORDER BY last_name;
+
+12- Muestra los nombres de las ciudades en orden descendente.
+SELECT city FROM `city` 
+ORDER BY city DESC;
+
+13- Muestra los nombres de las categorías en orden alfabético inverso.
+SELECT name FROM `category` 
+ORDER BY name DESC;
+
+14 - Muestra los nombres de las películas en orden descendente.
+SELECT title FROM `film` 
+ORDER BY title DESC;
+
+15- Muestra los nombres de los clientes en orden alfabético por su nombre.
+SELECT first_name FROM `customer` 
+ORDER BY first_name;
+
+16 - Muestra los nombres de los países en orden descendente.
+SELECT country FROM `country` 
+ORDER BY country DESC;
+
+17 - Muestra los nombres de los idiomas en orden alfabético inverso.
+SELECT name FROM `language` 
+ORDER BY name DESC;
+
+18- Muestra los nombres de las tiendas en orden ascendente.
+SELECT store_id FROM `store`
+ORDER BY store_id;
+
+19- Muestra los nombres de los staffs en orden alfabético por su apellido.
+SELECT first_name, last_name FROM `staff` 
+ORDER BY last_name;
+
+20-Muestra los nombres de las películas en orden descendente inverso.
+SELECT title FROM `film`
+ORDER BY title;

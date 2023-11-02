@@ -1,0 +1,18 @@
+Crear una base de datos para almacenar información sobre estudiantes en una escuela. Cada estudiante tiene un identificador único, nombre, edad y grado escolar.
+
+Paso 1: Diseño de la estructura de la base de datos
+
+Crea una tabla llamada "Estudiantes" con las siguientes columnas:
+
+ID (entero): Identificador único del estudiante.
+Nombre (cadena de texto): Nombre del estudiante.
+Edad (entero): Edad del estudiante.
+Grado (entero): Grado escolar del estudiante.
+
+Paso 2: Inserción de datos
+
+Inserta algunos datos de ejemplo en la tabla "Estudiantes".
+
+Paso 3: Consultas de la base de datos
+
+Obtener todos los estudiantes.

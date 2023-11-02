@@ -1,0 +1,143 @@
+Ejercicios POKEMONBD
+
+Ejercicio 1: Muestra todos los Pokémon en la base de datos.
+
+SELECT * FROM pokemon;
+
+Ejercicio 2: Muestra los nombres y tipos de todos los Pokémon.
+
+SELECT p.nombre AS pokemon, t.nombre AS tipo
+FROM pokemon p
+INNER JOIN pokemon_tipo pkt ON pkt.numero_pokedex = p.numero_pokedex
+INNER JOIN tipo t ON t.id_tipo = pkt.id_tipo;
+
+Ejercicio 3: Muestra los nombres y tipos de todos los Pokémon que solo sean tipo "Agua"
+
+SELECT p.nombre AS pokemon, t.nombre AS tipo
+FROM pokemon p
+INNER JOIN pokemon_tipo pkt ON pkt.numero_pokedex = p.numero_pokedex
+INNER JOIN tipo t ON t.id_tipo = pkt.id_tipo
+WHERE t.id_tipo = 1;
+
+
+Ejercicio 4: Muestra los nombres de los Pokémon en orden alfabético descendente.
+
+SELECT p.nombre 
+FROM pokemon p
+INNER JOIN pokemon_tipo pkt ON pkt.numero_pokedex = p.numero_pokedex
+ORDER BY p.nombre;
+
+Ejercicio 5: Cuenta cuántos Pokémon de tipo "Fuego" hay en la base de datos.
+
+SELECT t.nombre, COUNT(t.nombre) AS cantidad_pokemon
+FROM pokemon p
+INNER JOIN pokemon_tipo pkt ON pkt.numero_pokedex = p.numero_pokedex
+INNER JOIN tipo t ON t.id_tipo = pkt.id_tipo
+WHERE t.id_tipo = 6;
+
+Ejercicio 6: Muestra los nombres de los pokemon cuyo ataque sea mayor a 50
+
+SELECT p.nombre,eb.ataque
+FROM pokemon p
+INNER JOIN estadisticas_base eb ON eb.numero_pokedex = p.numero_pokedex
+WHERE eb.ataque > 50;
+
+Ejercicio 7: Encuentra los Pokémon que tienen un velocidad entre 30 y 40, ordenados por nombre de forma ascendente.
+
+SELECT p.nombre,eb.velocidad
+FROM pokemon p
+INNER JOIN estadisticas_base eb ON eb.numero_pokedex = p.numero_pokedex
+WHERE eb.velocidad BETWEEN 30 AND 40
+ORDER BY p.nombre;
+
+Ejercicio 8: Encuentra los nombres de los Pokémon que pueden aprender el movimiento "Rayo Solar".
+
+SELECT pmf.id_movimiento, m.nombre, p.nombre AS pokemon
+FROM pokemon p 
+INNER JOIN pokemon_movimiento_forma pmf ON pmf.numero_pokedex = p.numero_pokedex
+INNER JOIN movimiento m ON m.id_movimiento = pmf.id_movimiento
+WHERE m.id_movimiento = 128;
+
+Ejercicio 9: Muestra los nombres de los Pokémon junto con la cantidad de movimientos que pueden aprender.
+
+SELECT p.nombre,GROUP_CONCAT( m.nombre) AS total_movimientos
+FROM pokemon p
+INNER JOIN pokemon_movimiento_forma pmf ON pmf.numero_pokedex = p.numero_pokedex
+INNER JOIN movimiento m ON m.id_movimiento = pmf.id_movimiento
+GROUP BY p.nombre;
+
+Ejercicio 10: Muestra los nombres de los Pokémon junto con los puntos de salud (ps).
+
+SELECT p.nombre, eb.ps
+FROM pokemon p 
+INNER JOIN estadisticas_base eb ON eb.numero_pokedex = p.numero_pokedex;
+
+Ejercicio 11: Encuentra el pokemon  de tipo "Agua" que tienen un poder de ataque igual y superior a 80.
+
+SELECT pt.numero_pokedex, p.nombre, eb.ataque, t.nombre AS tipo
+FROM pokemon p 
+INNER JOIN pokemon_tipo pt ON pt.numero_pokedex = p.numero_pokedex
+INNER JOIN estadisticas_base eb ON eb.numero_pokedex = pt.numero_pokedex 
+INNER JOIN tipo t On t.id_tipo = pt.id_tipo
+WHERE pt.id_tipo = 1 AND eb.ataque >= 80
+ORDER BY eb.ataque;
+
+Ejercicio 12: Muestre las evoluciones de todos los pokemon si es que tienen alguna.
+
+SELECT DISTINCT p1.nombre, p2.nombre as evolucion 
+FROM pokemon p1 
+LEFT JOIN evoluciona_de ed ON ed.pokemon_origen = p1.numero_pokedex 
+LEFT JOIN pokemon p2 ON p2.numero_pokedex = ed.pokemon_evolucionado;
+
+Ejercicio 13: Muestra los nombres de los Pokémon junto con el nombre del tipo de evolucion que necesitan.
+
+SELECT p.nombre, te.tipo_evolucion
+FROM pokemon p 
+INNER JOIN pokemon_forma_evolucion pfe ON pfe.numero_pokedex = p.numero_pokedex
+INNER JOIN forma_evolucion fe ON fe.id_forma_evolucion  = pfe.id_forma_evolucion
+INNER JOIN tipo_evolucion te ON te.id_tipo_evolucion = fe.tipo_evolucion;
+
+Ejercicio 14: Encuentra los Pokémon cuyo nombre comienza con la letra "P" y tienen una defensa superior a 30.
+
+SELECT p.nombre, eb.defensa
+FROM pokemon p 
+INNER JOIN estadisticas_base eb ON eb.numero_pokedex = p.numero_pokedex
+WHERE p.nombre LIKE "p%" AND eb.defensa > 30;
+
+Ejercicio 15 : Encuentra los nombres de los Pokémon que pueden aprender el movimiento que contenga alguna H.
+
+SELECT p.nombre, m.nombre AS movimiento
+FROM pokemon p 
+INNER JOIN pokemon_movimiento_forma pmf ON pmf.numero_pokedex = p.numero_pokedex
+INNER JOIN movimiento m ON m.id_movimiento = pmf.id_movimiento
+WHERE m.nombre LIKE "%h%";
+
+Ejercicio 16: Encuentra los Pokémon que evolucionan a formas de tipo "Eléctrico".
+
+SELECT p.nombre, t.nombre AS tipo
+FROM pokemon p 
+INNER JOIN pokemon_tipo pt ON pt.numero_pokedex =p.numero_pokedex
+INNER JOIN tipo t ON t.id_tipo = pt.id_tipo
+WHERE t.nombre = "Eléctrico";
+
+Ejercicio 17: Encuentra los Pokémon cuyo nombre comienza con la letra "S" y tienen una velocidad mayor a 40.
+
+SELECT p.nombre, eb.velocidad
+FROM pokemon p 
+INNER JOIN estadisticas_base eb ON eb.numero_pokedex = p.numero_pokedex
+WHERE p.nombre LIKE "s%" AND  eb.velocidad > 40;
+
+Ejercicio 18: Muestra los nombres de los Pokémon que tienen una evolución de tipo "Piedra".
+Ejercicio 19: Encuentra los Pokémon que tienen una evolución de tipo "Intercambio".
+
+SELECT p.nombre, te.tipo_evolucion as tipo
+FROM pokemon p 
+INNER JOIN pokemon_forma_evolucion pfe ON pfe.numero_pokedex = p.numero_pokedex
+INNER JOIN forma_evolucion fe ON fe.id_forma_evolucion = pfe.id_forma_evolucion
+INNER JOIN tipo_evolucion te ON te.id_tipo_evolucion = fe.id_forma_evolucion
+WHERE  te.tipo_evolucion = "Intercambio";
+
+Ejercicio 20: Contar los pokemon que hay en total en la base de datos.
+
+SELECT COUNT(p.nombre) AS total_pokemon
+FROM pokemon p;

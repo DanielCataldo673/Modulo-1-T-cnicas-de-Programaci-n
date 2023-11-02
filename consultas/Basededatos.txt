@@ -1,0 +1,64 @@
+A-Crear una base de datos pokemon , y solucionar el tema de la evolucion de ellos, creando una tabla pivote.
+Insertar 20 pokemon con su evolución, si es que la tiene.
+Hacer las consultas correspondiente para mostrar todo.
+
+Tabla pokemon
+
+SELECT * FROM pokemon;
+
+Tabla evolucion
+
+SELECT * FROM evolucion;
+
+Tabla evolucion_de
+
+SELECT * 
+FROM evolucion_de ed
+INNER JOIN pokemon p ON p.id_pokemon = ed.id_pokemon
+INNER JOIN evolucion e ON e.id_evolucion = ed.id_evolucion;
+____________________________________________________________
+
+SELECT p.id_pokemon, p.Nombre, p.Tipos, p.imagen, e.Nombre AS nombre_evolucion, e.Tipos AS tipos_evolucion, e.Imagen AS imagen_evolucion
+FROM evolucion_de ed
+INNER JOIN pokemon p ON p.id_pokemon = ed.id_pokemon
+INNER JOIN evolucion e ON e.id_evolucion = ed.id_evolucion;
+
+
+B- Crear una base de datos del CFP20(consultar la pagina web),con todos sus cursos, e incluir un sistema de inscripciones.
+Hacer las consultas correspondiente para mostrar todo.
+
+Tabla alumnos
+
+SELECT * 
+FROM alumnos;
+
+Tabla cursos
+
+SELECT * 
+FROM cursos;
+
+Tabla inscripciones
+
+SELECT *
+FROM inscripciones i 
+INNER JOIN alumnos a ON a.id_alumnos = i.id_alumnos
+INNER JOIN cursos c ON c.id_cursos = i.id_cursos;
+
+_____________________________________________________
+
+SELECT i.id_inscripciones, a.id_alumnos, a.DNI, CONCAT(a.Nombre,' ' ,a.Apellido) AS FULL_NAME, a.Edad, a.email, c.id_cursos, c.Area, c.Nombre_curso, c.turno
+FROM inscripciones i 
+INNER JOIN alumnos a ON a.id_alumnos = i.id_alumnos
+INNER JOIN cursos c ON c.id_cursos = i.id_cursos;
+
+
+
+
+C- Recrear una Base de datos con su equipo favorito de futbol, incluir la mayoria de los jugadores nombre,apellido, posicion,  club,pais,nivel de ataque,nivel defensa, nivel shoot,nivel pase,imagen, rating.
+
+SELECT *
+FROM jugadores j
+INNER JOIN habilidades h ON h.id_habilidades = j.id_jugadores;
+
+
+

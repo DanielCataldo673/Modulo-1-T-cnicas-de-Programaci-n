@@ -1,0 +1,13 @@
+Ejercicio 1
+    Crear una clase "Persona" que tenga propiedades como , nombre, edad, ciudad, telefono, crear un metodo para mostrar la informacion y instanciar a 3 personas.
+
+    Ejercicio 2
+    Crear una clase "coche" con propiedad marca, modelo, año y metodos para mostrar mostrar la informacion y otro para acelerar, instanciar 3 autos y acelerar uno de ellos.
+
+    Ejercicio 3
+    Crear una clase llamada "empleado" con propiedades como nombre, salario, fecha de contratacion , luego crear metodos para calcular el salario anual y dar un aumento , mostrar la informacion del empleado, Crear 3 empleados y realiza las operaciones de darle aumentos, mostrar sus detalles.
+
+    Ejercicio 4
+    Crear una clase llamada "libros" con propiedades como titulo, autor, numero de paginas, luego crear metodos separados para mostrar titulo, autor y numero de paginas, instanciar 2 libros.
+
+    Los ejercicios deben estar separados en 2 archivos.

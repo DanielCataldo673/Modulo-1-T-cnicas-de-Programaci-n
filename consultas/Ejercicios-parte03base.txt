@@ -1,0 +1,88 @@
+A- Base de datos SAKILA - GENERALES
+
+1. Mostrar todas las películas en orden alfabético por título
+2. Mostrar los nombres y apellidos de todos los actores en orden inverso alfabético
+3. Mostrar los nombres de todas las ciudades en orden alfabético inverso
+4. Mostrar los nombres de todas las categorías en orden alfabético junto con su ID
+5. Mostrar los nombres de todos los clientes en orden aleatorio
+6. Mostrar los nombres de todos los idiomas en orden alfabético junto con su ID
+7. Mostrar los nombres de todos los empleados en orden inverso alfabético junto con su ID
+8. Mostrar los nombres de todas las películas que tengan una clasificación "G" en orden alfabético
+9-  Mostrar los nombres de todas las películas que sean del lenaguaje "Ingles" en orden aleatorio
+10. Mostrar los nombres de todos los actores que tienen una "a" en su apellido en orden inverso alfabético
+11. Mostrar los nombres de todas las películas que tengan una duración mayor a 120 minutos en orden alfabético
+12. Mostrar los nombres de todas las películas que tienen una clasificación "PG-13" en orden inverso alfabético
+13. Mostrar los nombres de todas las películas que tienen una duración menor a 90 minutos en orden alfabético.
+14. Mostrar los nombres y apellidos de todos los actores cuyo apellido comienza con la letra "C" en orden inverso alfabético
+15.  Mostrar los nombres de todas las películas que tienen una duración entre 90 y 120 minutos en orden aleatorio
+16.  Numero de películas de cada rating
+17.Películas que cuesten 0.99, 2.99 y tengan un rating ‘g’ o ‘r’ y que hablen de cocodrilos (cocodrile)
+18. Actores que tengan una x en el nombre o en el apellido
+19.Direcciones de california que tengan ‘274’ en el número de teléfono
+20. Películas ‘Épicas’ (Epic) o ‘Brillantes’ (brilliant) que duren más de 180 minutos
+21. Películas que duren entre 100 y 120 minutos o entre 50 y 70 minutos    
+22. Direcciones de ontario o de punjab o que su código postal acabe en 5 o que su teléfono acabe en 5
+
+
+
+B- SAKILA -  Group by y having
+
+1. Mostrar el total de ventas por empleado que superen los $5000
+2- Obtenga una lista de todos los clientes y la cantidad de películas que han alquilado.
+3. Mostrar los pagos realizados por cada cajero cuyo total sea superior a $1500 y cuya cantidad de pagos sea mayor a 100
+
+BD NORTHWIND1
+
+1-Encontrar el nombre de cada puesto y el número total de empleados en ese puesto.
+2-Encontrar el nombre de cada ciudad y el número total de empleados que viven en esa ciudad.
+3- Encontrar el nombre de cada estado y el número total de empleados que viven en ese estado.
+4-Encontrar el nombre de cada país y el número total de empleados que viven en ese país.
+
+BD NORTHWIND2
+
+1- Mostrar los  primeros 5 clientes en orden alfabético por nombre. 
+2-Encontrar el nombre de cada país y el número total de clientes en ese país.
+3-Encontrar el id  de cada producto y el total de ventas de ese producto.
+
+
+C- Crear la base de datos de su proyecto junto a los campos y a sus registros, esta base de datos es a modo de practica, el cuatrimestre que viene sufrira modificaciones, agregar una tabla de clientes con los campos (id, nombre, apellido, direccion,ciudad, Pais , email, telefono, administrador (si o no)  ) insertar 10 registros.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+
+D- crear una base de datos para un restaurante , con la cual incluya 5 TABLAS (menu, mesas, promociones, usuarios, venta)
+cada tabla tendra estos diferentes campos:
+MENU: id, producto, precio, stok, tipo, foto
+MESAS: id, numero , reservado
+PROMOCIONES: id, descuento
+USUARIO: id , nombre, nickname, password, correo
+VENTA: id, fecha, total, horario, cantidad, comensales, estado
+INSERTAR 20 REGISTROS DE CADA UNO.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+E- Crear una base de datos para una jugueteria , con la cual incluye 6 TABLAS (rango de edades, marcas, categoria,productos empleados,usuarios)
+cada tabla tendra estos diferentes campos:
+EDADES: id , nombre
+MARCAS: id , nombre
+CATEGORIA: id, nombre
+PRODUCTOS: id, nombre, descripcion, precio, destacado, sotck
+EMPLEADOS: id , nombre, rol
+USUARIOS: id, nombre, nickname, password, correo.
+INSERTAR 20 REGISTROS DE CADA UNO.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+F: Agregar , Actualizar y borrar registro a travez de codigo en las 3 base de datos y copiar el codigo a continuacion.
+
+Ejemplo de actualizar y borrar registros : 
+Actualizar :  UPDATE `actor` SET `first_name` = 'BETTEs' WHERE `actor_id` = 6;
+Eliminar:  DELETE FROM `actor` WHERE `actor_id` = 25"
+RECUERDEN UTILIZAR EL WHERE EN EL ID QUE QUIERAN ELIMINAR.
+
+
+
+
+
+
+

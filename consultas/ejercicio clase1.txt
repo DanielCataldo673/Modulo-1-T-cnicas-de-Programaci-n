@@ -1,0 +1,11 @@
+SELECT first_name, last_name FROM `employees` 
+ORDER BY last_name DESC;
+
+SELECT id, order_date FROM `orders` 
+order BY  order_date
+
+SELECT id, first_name,company, city FROM `customers` 
+ORDER BY city, company
+
+SELECT last_name, first_name, city FROM `employees`
+ORDER BY city, last_name

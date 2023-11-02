@@ -1,0 +1,46 @@
+A.Consulta Order By - en base de datos northwind
+
+Ordena por el precio mas bajo
+SELECT  * from products 
+order by list_price 
+
+precio mas alto
+SELECT  * from products 
+order by list_price DESC
+
+
+odenar por nombre en empleados(alfabetica)
+SELECT * FROM employees order by first_name;
+
+
+ordenar en forma aleatoria
+SELECT * FROM employees order by rand();
+
+ordenar por dos campos:
+SELECT * FROM employees order by first_name , city;
+
+Ejercicios Order By:
+
+1-Ordenar empleados por apellido de manera descendente, solo mostrar apellido y nombre:
+
+SELECT LastName, FirstName
+FROM Employees
+ORDER BY LastName DESC;
+
+2. Ordenar pedidos por fecha de manera ascendente, solo mostrar id y fecha:
+
+SELECT id,order_date
+FROM Orders
+ORDER BY order_date ASC;
+
+3. Ordenar clientes por ciudad y compania de manera ascendente, solo mostrar id, nombre, compania y ciudad :
+
+SELECT id,last_name, company, city
+FROM Customers
+ORDER BY city ASC, company ASC;
+
+4.Ordenar empleados por ciudad y apellido de manera ascendente, solo mostrar apellido, nombre y ciudad:
+
+SELECT last_name, first_name, city
+FROM Employees
+ORDER BY city ASC,last_name ASC;

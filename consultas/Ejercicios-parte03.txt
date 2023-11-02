@@ -1,0 +1,293 @@
+A- Base de datos SAKILA - GENERALES
+
+1. Mostrar todas las películas en orden alfabético por título
+
+SELECT title, length FROM film
+ORDER BY title;
+
+2. Mostrar los nombres y apellidos de todos los actores en orden inverso alfabético
+
+SELECT first_name, last_name FROM actor
+ORDER BY first_name DESC, last_name DESC;
+
+SELECT actor_id, CONCAT(first_name, ' ' , last_name) AS full_name FROM actor
+ORDER BY full_name DESC;// función CONCAT(CONCATENAR) 
+
+3. Mostrar los nombres de todas las ciudades en orden alfabético inverso
+
+SELECT city FROM city
+ORDER BY city DESC;
+
+4. Mostrar los nombres de todas las categorías en orden alfabético junto con su ID
+
+SELECT category_id, name FROM category
+ORDER BY name;
+
+5. Mostrar los nombres de todos los clientes en orden aleatorio
+
+SELECT first_name FROM customer
+ORDER BY rand();
+
+6. Mostrar los nombres de todos los idiomas en orden alfabético junto con su ID
+
+SELECT language_id, name FROM language
+ORDER BY name;
+
+7. Mostrar los nombres de todos los empleados en orden inverso alfabético junto con su ID
+
+SELECT staff_id, first_name FROM staff
+ORDER BY first_name DESC;
+
+SELECT staff_id, CONCAT(first_name, ' ' , last_name) AS full_name FROM staff
+ORDER BY full_name DESC;// Función CONCAT(CONCATENAR)
+
+8. Mostrar los nombres de todas las películas que tengan una clasificación "G" en orden alfabético
+
+SELECT title, rating FROM film 
+WHERE rating = 'g' 
+ORDER BY title;
+
+9-  Mostrar los nombres de todas las películas que sean del lenaguaje "Ingles" en orden aleatorio
+
+SELECT title, language_id FROM `film` 
+WHERE language_id = 1
+ORDER BY rand();
+
+10. Mostrar los nombres de todos los actores que tienen una "a" en su apellido en orden inverso alfabético
+
+SELECT CONCAT(first_name, ' ' , last_name) AS full_name FROM actor
+WHERE last_name LIKE '%a%'
+ORDER BY full_name DESC;
+
+11. Mostrar los nombres de todas las películas que tengan una duración mayor a 120 minutos en orden alfabético
+
+SELECT title, length FROM film
+WHERE length > 120
+ORDER BY title;
+
+12. Mostrar los nombres de todas las películas que tienen una clasificación "PG-13" en orden inverso alfabético
+
+SELECT title, rating FROM film
+WHERE rating = "PG-13"
+ORDER BY title DESC;
+
+13. Mostrar los nombres de todas las películas que tienen una duración menor a 90 minutos en orden alfabético.
+
+SELECT title, length FROM film
+WHERE length < 90
+ORDER BY title;
+
+14. Mostrar los nombres y apellidos de todos los actores cuyo apellido comienza con la letra "C" en orden inverso alfabético
+
+SELECT CONCAT(first_name, ' ' , last_name) AS full_name FROM actor
+WHERE last_name LIKE 'c%'
+ORDER BY full_name DESC;
+
+15.  Mostrar los nombres de todas las películas que tienen una duración entre 90 y 120 minutos en orden aleatorio
+
+SELECT title, length FROM film
+WHERE length BETWEEN 90 AND 120
+ORDER BY rand();
+
+16.  Numero de películas de cada rating
+
+SELECT COUNT(*) AS numero_Peliculas, rating FROM film
+GROUP BY rating;
+
+17.Películas que cuesten 0.99, 2.99 y tengan un rating ‘g’ o ‘r’ y que hablen de cocodrilos (hunter)
+
+SELECT description, rental_rate, rating FROM film
+WHERE description like '%hunter%'
+AND rental_rate BETWEEN 0.99 AND 2.99 
+AND (rating = 'g' or rating = 'r');
+
+18. Actores que tengan una x en el nombre o en el apellido
+
+SELECT  first_name, last_name  FROM actor
+WHERE first_name LIKE '%x%' OR last_name LIKE '%x%';
+
+19.Direcciones de california que tengan ‘274’ en el número de teléfono
+
+SELECT district, phone FROM address
+WHERE district = 'california' AND phone LIKE '%274%';
+
+20. Películas ‘Épicas’ (Epic) o ‘Brillantes’ (brilliant) que duren más de 180 minutos
+
+SELECT title, description, length FROM film
+WHERE length > 180
+AND  (description LIKE '%Epic%' OR description like '%Brilliant%');
+ 
+
+21. Películas que duren entre 100 y 120 minutos o entre 50 y 70 minutos  
+
+SELECT title, length FROM film
+WHERE length BETWEEN 100 AND 120 OR length BETWEEN 50 AND 70;
+  
+22. Direcciones de ontario o de punjab o que su código postal acabe en 5 o que su teléfono acabe en 5
+
+SELECT district, postal_code, phone FROM address
+WHERE district = 'ontario' OR 'punjab'
+OR postal_code LIKE '%5'
+OR phone LIKE '%5';
+
+B- SAKILA -  Group by y having
+
+1. Mostrar el total de ventas por empleado que superen los $5000 //payment
+
+SELECT staff_id, SUM(amount) AS total_ventas FROM payment
+GROUP BY staff_id
+HAVING total_ventas > 5000;
+
+
+2- Obtenga una lista de todos los clientes y la cantidad de películas que han alquilado.//no
+3. Mostrar los pagos realizados por cada cajero cuyo total sea superior a $1500 y cuya cantidad de pagos sea mayor a 100//payment
+
+SELECT SUM(payment_id) AS total_pagos, staff_id, amount FROM `payment`
+GROUP BY staff_id
+HAVING amount > 1500 AND total_pagos > 100;
+
+BD NORTHWIND1
+
+1-Encontrar el nombre de cada puesto y el número total de empleados en ese puesto.
+
+SELECT job_title, COUNT(id) AS empleados_Puesto FROM `employees` 
+GROUP BY job_title;
+
+2-Encontrar el nombre de cada ciudad y el número total de empleados que viven en esa ciudad.
+
+SELECT city, COUNT(id) AS empleados_Ciudad FROM `employees` 
+GROUP BY city;
+
+3- Encontrar el nombre de cada estado y el número total de empleados que viven en ese estado.
+
+SELECT state_province, COUNT(id) AS empleados_Estado FROM `employees` 
+GROUP BY state_province;
+
+4-Encontrar el nombre de cada país y el número total de empleados que viven en ese país.
+
+SELECT country_region, COUNT(id) AS empleados_Pais FROM `employees` 
+GROUP BY country_region;
+
+
+BD NORTHWIND2
+
+1- Mostrar los  primeros 5 clientes en orden alfabético por nombre. 
+
+SELECT CustomerID, CustomerName FROM `customers` 
+LIMIT 5;
+
+2-Encontrar el nombre de cada país y el número total de clientes en ese país.
+
+SELECT COUNT(CustomerID) AS clientes_Pais, Country FROM `customers` 
+GROUP BY Country;
+
+3-Encontrar el id  de cada producto y el total de ventas de ese producto.
+
+SELECT ProductID, COUNT(Quantity) AS total_Ventas FROM `orderdetails` 
+GROUP BY ProductID;
+
+
+
+C- Crear la base de datos de su proyecto junto a los campos y a sus registros, esta base de datos es a modo de practica, el cuatrimestre que viene sufrira modificaciones, agregar una tabla de clientes con los campos (id, nombre, apellido, direccion,ciudad, Pais , email, telefono, administrador (si o no)  ) insertar 10 registros.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+
+D- crear una base de datos para un restaurante , con la cual incluya 5 TABLAS (menu, mesas, promociones, usuarios, venta)
+cada tabla tendra estos diferentes campos:
+MENU: id, producto, precio, stok, tipo, foto
+MESAS: id, numero , reservado
+PROMOCIONES: id, descuento
+USUARIO: id , nombre, nickname, password, correo
+VENTA: id, fecha, total, horario, cantidad, comensales, estado
+INSERTAR 20 REGISTROS DE CADA UNO.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+E- Crear una base de datos para una jugueteria , con la cual incluye 6 TABLAS (rango de edades, marcas, categoria,productos empleados,usuarios)
+cada tabla tendra estos diferentes campos:
+EDADES: id , nombre
+MARCAS: id , nombre
+CATEGORIA: id, nombre
+PRODUCTOS: id, nombre, descripcion, precio, destacado, sotck
+EMPLEADOS: id , nombre, rol
+USUARIOS: id, nombre, nickname, password, correo.
+INSERTAR 20 REGISTROS DE CADA UNO.
+EXPORTAR Y SUBIR A GIT HUB
+
+
+F: Agregar , Actualizar y borrar registro a travez de codigo en las 3 base de datos y copiar el codigo a continuacion.
+
+Ejemplo de actualizar y borrar registros : 
+Actualizar :  UPDATE `actor` SET `first_name` = 'BETTEs' WHERE `actor_id` = 6;
+Eliminar:  DELETE FROM `actor` WHERE `actor_id` = 25"
+RECUERDEN UTILIZAR EL WHERE EN EL ID QUE QUIERAN ELIMINAR.
+
+JUGUETERIA
+
+CREATE
+INSERT INTO empleados
+SET nombre = 'Aurelio';
+
+UPDATE(actualizar)
+
+UPDATE empleados
+SET nombre = 'Kika'
+WHERE empleado_id = 10;
+
+BORRAR
+
+DELETE FROM empleados
+WHERE empleado_id = 2;
+
+
+RESTAURANTE
+
+BORRAR
+
+DELETE FROM usuario
+WHERE usuario_id = 3;
+
+UPDATE(actualizar)
+
+UPDATE  usuario
+SET nickname = 'peso_Pluma'
+WHERE usuario_id = 8;
+
+CREATE
+
+INSERT INTO usuario
+SET usuario_id = 3;
+
+PROYECTO
+
+BORRAR
+
+DELETE FROM customers
+WHERE customers_id = 5;
+
+UPDATE(actualizar)
+
+UPDATE  customers
+SET first_name  = 'Julia'
+WHERE customers_id = 3;
+
+CREATE
+
+INSERT INTO customers
+SET customers_id = 5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
